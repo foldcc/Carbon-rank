@@ -6,6 +6,9 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.HttpRequestDecoder;
 import io.netty.handler.codec.http.HttpResponseEncoder;
+import tool.JDBCutil;
+
+import java.sql.Connection;
 
 public class CarbonServer {
     public void Create(int port){
@@ -45,7 +48,10 @@ public class CarbonServer {
         System.out.println("Server Close | bind: " + port);
     }
     public  static  void  main(String[] args){
-        CarbonServer server = new CarbonServer();
-        server.Create(8089);
+//        CarbonServer server = new CarbonServer();
+//        server.Create(8089);
+        Connection connection = JDBCutil.getConnection();
+        System.out.println( JDBCutil.executeQuery("SELECT * FROM rank_user" , new Object()).toArray().length);
+        JDBCutil.close(connection);
     }
 }
