@@ -1,4 +1,7 @@
-import handler.FilterHandler;
+package com.carbon_rank;
+
+import com.carbon_rank.data.C_FilterConfig;
+import com.carbon_rank.handler.FilterHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -6,9 +9,6 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.HttpRequestDecoder;
 import io.netty.handler.codec.http.HttpResponseEncoder;
-import tool.JDBCutil;
-
-import java.sql.Connection;
 
 public class CarbonServer {
     public void Create(int port){
@@ -34,9 +34,15 @@ public class CarbonServer {
                 .childOption(ChannelOption.SO_KEEPALIVE, true);
 
         try {
-            System.out.println("Server Start | bind: " + port);
+            System.out.println("========================================");
+            System.out.println("system path : " + C_FilterConfig.SYSTEM_PATH);
+            System.out.println("user path : " + C_FilterConfig.USER_PATH);
+            System.out.println("request type : " + C_FilterConfig.Request_Type);
+            System.out.println("server start | bind: " + port);
+            System.out.println("========================================");
             //同步阻塞等待
-            ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
+            ChannelFuture channelFuture;
+            channelFuture = serverBootstrap.bind(port).sync();
             //关闭服务器
             channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
@@ -44,14 +50,13 @@ public class CarbonServer {
         }finally {
             workGrop.shutdownGracefully();
             bossGrop.shutdownGracefully();
+            System.out.println("========================================");
+            System.err.println("server close | bind: " + port);
         }
-        System.out.println("Server Close | bind: " + port);
     }
+
     public  static  void  main(String[] args){
-//        CarbonServer server = new CarbonServer();
-//        server.Create(8089);
-        Connection connection = JDBCutil.getConnection();
-        System.out.println( JDBCutil.executeQuery("SELECT * FROM rank_user" , new Object()).toArray().length);
-        JDBCutil.close(connection);
+        com.carbon_rank.CarbonServer server = new com.carbon_rank.CarbonServer();
+        server.Create(8089);
     }
 }

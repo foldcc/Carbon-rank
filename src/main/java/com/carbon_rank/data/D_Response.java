@@ -1,7 +1,6 @@
-package data;
+package com.carbon_rank.data;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonParser;
 import io.netty.buffer.Unpooled;
 import io.netty.handler.codec.http.DefaultFullHttpResponse;
 import io.netty.handler.codec.http.FullHttpResponse;
@@ -9,7 +8,6 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.util.CharsetUtil;
 
-import java.io.UnsupportedEncodingException;
 
 public class D_Response {
     public int state;

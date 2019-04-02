@@ -1,7 +1,6 @@
-package handler;
+package com.carbon_rank.handler;
 
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
-import data.C_FilterConfig;
+import com.carbon_rank.data.C_FilterConfig;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.http.HttpRequest;
@@ -16,9 +15,9 @@ public class FilterHandler extends ChannelInboundHandlerAdapter {
         if (msg instanceof HttpRequest)
         {
             ctx.pipeline().addLast(new SystemHandler());
-            ctx.pipeline().addLast(new NormalHandler());
+            ctx.pipeline().addLast(new UserHandler());
             QueryStringDecoder queryStringDecoder = new QueryStringDecoder(((HttpRequest) msg).uri());
-            if (!C_FilterConfig.Request_Type.isEmpty()){
+            if (!C_FilterConfig.Request_Type.equals("ALL")){
                 if (((HttpRequest) msg).method().name().equals(C_FilterConfig.Request_Type))
                     super.channelRead(ctx, queryStringDecoder);
                 else
