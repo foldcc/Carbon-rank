@@ -1,6 +1,6 @@
 package com.carbon_rank;
 
-import com.carbon_rank.bean.user.UserInfoMapper;
+import com.carbon_rank.mapper.user.UserInfoMapper;
 import com.carbon_rank.data.C_FilterConfig;
 import com.carbon_rank.data.D_SqlSessionFactory_Instance;
 import com.carbon_rank.handler.FilterHandler;
@@ -66,19 +66,9 @@ public class CarbonServer {
 //        server.Create(8089);
         SqlSession sqlSession = D_SqlSessionFactory_Instance.getSqlSessionFactory().openSession();
         UserInfoMapper mapper = sqlSession.getMapper(UserInfoMapper.class);
-//        Map<String, Object> userInfo = mapper.getUserInfoById(123456);
-//        for (String key : userInfo.keySet()) {
-//            System.out.println("\tkey= \t"+ key + "  \tvalue= \t" + userInfo.get(key));
-//        }
-        List<Object> allUserInfo = mapper.getAllUserInfo();
-        for (Object ma:allUserInfo
-             ) {
-            System.out.println(((Map<String,Object>)ma).toString());
-//            for (String key : ma.keySet()) {
-//                System.out.println("\tkey= \t"+ key + "  \tvalue= \t" + ma.get(key));
-//            }
-        }
+        List<Map<String, Object>> allUserInfo = mapper.getAllUserInfo();
         System.out.println(allUserInfo.toString());
+        System.out.println(mapper.getUserInfoById(25864).toString());
         sqlSession.close();
     }
 }
