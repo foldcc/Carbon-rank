@@ -2,5 +2,12 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.carbon_rank.data.bean.user">
+<mapper namespace="com.carbon_rank.bean.user.UserInfoMapper">
+
+    <select id="getUserInfoById" resultType="map">
+        select * from rank_user where user_token = #{id}
+    </select>
+    <select id="getAllUserInfo" resultType="object">
+        select * from rank_user
+    </select>
 </mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalModuleListStorage">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.foldcc.Carbon-rank.iml" filepath="$PROJECT_DIR$/.idea/modules/com.foldcc.Carbon-rank.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.foldcc.Carbon-rank.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.foldcc.Carbon-rank.test.iml" />
+    </modules>
+  </component>
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.foldcc.Carbon-rank.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.foldcc.Carbon-rank.main.iml" />
+    </modules>
+  </component>
+</project>
