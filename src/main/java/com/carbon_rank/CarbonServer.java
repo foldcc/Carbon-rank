@@ -13,6 +13,8 @@ import io.netty.handler.codec.http.HttpRequestDecoder;
 import io.netty.handler.codec.http.HttpResponseEncoder;
 import org.apache.ibatis.session.SqlSession;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
@@ -61,14 +63,15 @@ public class CarbonServer {
         }
     }
 
-    public  static  void  main(String[] args){
-//        com.carbon_rank.CarbonServer server = new com.carbon_rank.CarbonServer();
-//        server.Create(8089);
-        SqlSession sqlSession = D_SqlSessionFactory_Instance.getSqlSessionFactory().openSession();
-        UserInfoMapper mapper = sqlSession.getMapper(UserInfoMapper.class);
-        List<Map<String, Object>> allUserInfo = mapper.getAllUserInfo();
-        System.out.println(allUserInfo.toString());
-        System.out.println(mapper.getUserInfoById(25864).toString());
-        sqlSession.close();
+    public  static  void  main(String[] args) throws NoSuchMethodException {
+        com.carbon_rank.CarbonServer server = new com.carbon_rank.CarbonServer();
+        server.Create(8089);
+
+//        SqlSession sqlSession = D_SqlSessionFactory_Instance.getSqlSessionFactory().openSession();
+//        UserInfoMapper mapper = sqlSession.getMapper(UserInfoMapper.class);
+//        List<Map<String, Object>> allUserInfo = mapper.getAllUserInfo();
+//        System.out.println(allUserInfo.toString());
+//        System.out.println(mapper.getUserInfoById("123456").toString());
+//        sqlSession.close();
     }
 }

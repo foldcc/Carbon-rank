@@ -9,7 +9,7 @@ public interface UserInfoMapper {
      * @param id
      * @return
      */
-    Map<String,Object> getUserInfoById(Integer id);
+    Map<String,Object> getUserInfoById(String id);
 
     /***
      * 查询所有用户信息
