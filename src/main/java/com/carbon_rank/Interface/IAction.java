@@ -1,6 +1,7 @@
 package com.carbon_rank.Interface;
 import com.carbon_rank.data.D_Response;
 
+import java.util.List;
 import java.util.Map;
 
 public interface IAction {
@@ -9,5 +10,5 @@ public interface IAction {
      * @param params
      * @return
      */
-    D_Response OnClientAction(Map<String , Object> params);
+    D_Response OnClientAction(Map<String, List<String>> params);
 }
